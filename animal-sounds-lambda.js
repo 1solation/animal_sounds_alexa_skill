@@ -1,6 +1,7 @@
 let speechOutput;
 let reprompt;
-let welcomeOutput = "Welcome to Animal Sounds. You can ask me for any animal sound, like a bear sound. How can I help?";
+let welcomeSound = "<audio src='soundbank://soundlibrary/animals/amzn_sfx_rooster_crow_01'/>";
+let welcomeOutput = welcomeSound + "Welcome to Animal Sounds. You can ask me for an animal sound. How can I help?";
 let welcomeReprompt = "You can say something like: what does a dog sound like, or let me hear a cat.";
 // 2. Skill Code =======================================================================================================
 "use strict";
@@ -50,14 +51,47 @@ const handlers = {
 		this.emit(":ask", speechOutput, speechOutput);
     },
 	'PlaySoundIntent': function () {
-		speechOutput = '';
+		var speechOutput = '';
+		var speechReprompt = '';
 		//any intent slot variables are listed here for convenience
 		let animalSlot = resolveCanonical(this.event.request.intent.slots.animal);
 		console.log('User asked for a ' + animalSlot + ' sound');
-
 		//Your custom intent handling goes here
-		speechOutput = "this is a test of playSoundIntent, you asked for " + animalSlot;
-		this.emit(":ask", speechOutput, speechOutput);
+        var animals = {
+            'bear' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_bear_groan_roar_01'/>",
+            'bird' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_bird_forest_02'/>",
+            'cat' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_cat_meow_1x_01'/>",
+            'cat purr' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_cat_purr_03'/>",
+            'chicken' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_chicken_cluck_01'/>",
+            'crow' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_crow_caw_1x_02'/>",
+            'dog' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_dog_med_bark_2x_02'/>",
+            'elephant' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_elephant_05'/>",
+            'horse' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_horse_huff_whinny_01'/>",
+            'lion' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_lion_roar_03'/>",
+            'monkey' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_monkeys_chatter_01'/>",
+            'rat' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_rat_squeaks_01'/>",
+            'raven' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_raven_caw_2x_01'/>",
+            'rooster' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_rooster_crow_02'/>",
+            'sheep' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_sheep_bleat_03'/>",
+            'turkey' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_turkey_gobbling_01'/>",
+            'wolf' : "<audio src='soundbank://soundlibrary/animals/amzn_sfx_wolf_howl_02'/>"
+        }
+
+        animalSlot = animalSlot.toLowerCase();
+
+        if(animalSlot && animals[animalSlot]) {
+            var audio = '';
+            var audio_src = animals[animalSlot];
+
+            speechOutput = 'Here is what a ' + animalSlot + ' sounds like : ' + audio_src;
+            speechReprompt = 'Would you like to hear that again?';
+        } else {
+            speechOutput = 'Sorry, a ' + animalSlot + ' is not supported in this skill yet.'
+            speechReprompt = 'this is a play animal intent reprompt'
+        }
+
+		//speechOutput = "this is a test of playSoundIntent, you asked for " + animalSlot;
+		this.emit(":ask", speechOutput, speechReprompt);
     },
 	'Unhandled': function () {
         speechOutput = "The skill didn't quite understand what you wanted.  Do you want to try something else?";
