@@ -86,8 +86,13 @@ const handlers = {
             speechOutput = 'Here is what a ' + animalSlot + ' sounds like : ' + audio_src;
             speechReprompt = 'Would you like to hear that again?';
         } else {
+<<<<<<< HEAD
             speechOutput = 'Sorry, a ' + animalSlot + ' is not supported in this skill yet '
             speechReprompt = 'You can try asking me for another animal sound'
+=======
+            speechOutput = 'Sorry, a ' + animalSlot + ' is not supported in this skill yet.'
+            speechReprompt = 'this is a play animal intent reprompt'
+>>>>>>> 9c1abe10e8bb08cad20a53fdbfe1d2796ed73bac
         }
 
 		//speechOutput = "this is a test of playSoundIntent, you asked for " + animalSlot;
