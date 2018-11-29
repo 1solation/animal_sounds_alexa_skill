@@ -1,0 +1,64 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "animal sounds",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "PlaySoundIntent",
+                    "slots": [
+                        {
+                            "name": "animal",
+                            "type": "AMAZON.Animal"
+                        }
+                    ],
+                    "samples": [
+                        "show me {animal} noise",
+                        "show me {animal} sound",
+                        "play a {animal} noise",
+                        "{animal} noise",
+                        "{animal} sound",
+                        "can you tell me what {animal} sounds like",
+                        "can you play a {animal} sound",
+                        "can you play a {animal}",
+                        "what noise does a {animal} make",
+                        "what does {animal} sound like",
+                        "what does {animal} say",
+                        "let me hear a {animal}",
+                        "{animal}",
+                        "play an {animal}",
+                        "lets hear an {animal}",
+                        "lets hear a {animal}",
+                        "lets hear an {animal} sound",
+                        "what does an {animal} say",
+                        "what does a {animal} say",
+                        "play a random animal sound",
+                        "lets hear a {animal} sound",
+                        "what does a {animal} sound like",
+                        "play a {animal} sound"
+                    ]
+                }
+            ],
+            "types": []
+        }
+    }
+}
