@@ -1,5 +1,5 @@
 # animal_sounds_alexa_skill
-First attempt at creating an Alexa skill and using AWS services for the backend
+An Alexa skill which takes in certain phrases and output's an animal sound. Using AWS services for the backend.
 
 HOW TO USE THE SKILL:
 - Enable the skill in the alexa app
